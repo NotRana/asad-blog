@@ -1,0 +1,91 @@
+footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 60px 0;
+}
+
+footer h5 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer ul li a {
+  color: #fff;
+}
+
+footer p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+footer .social li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+footer .social li a {
+  color: #fff;
+  background-color: #222;
+  display: block;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+footer .social li a:hover {
+  background-color: #fff;
+  color: #222;
+}
+
+.no-underline li a{
+  text-decoration: none;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333; /* Set background color */
+  color: #fff; /* Set text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+/* Navbar list styles */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar item styles */
+.nav-item {
+  margin-left: 20px;
+}
+
+/* Navbar link styles */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f7ce3e;
+}
