@@ -24,11 +24,19 @@ db = client['blog']
 collection = db['posts']
 
 
+
+
 @app.route("/")
 def home():
+  
     # Get all the blog posts from the database
-    posts = collection.find()
-    return render_template("index.html", posts=posts, params=params)
+  posts = collection.find()
+
+  
+  
+  
+
+  return render_template("index.html",posts=posts, params=params)
 
 @app.route("/post/<post_id>")
 def post(post_id):
@@ -72,8 +80,8 @@ def create():
         # Save the file to a directory on your server
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        replitlink = request.form['replit']
-        githublink = request.form['github']
+        replitlink = request.form['replitlink']
+        githublink = request.form['githublink']
         # Save the post data and file name/path to the database
         collection.insert_one({
             "title": title,

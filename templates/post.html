@@ -1,19 +1,41 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-
-<div class="container">
-<div class="post">
-
-
-  <h2 style="word-wrap: break-word;">{{ post.title }}</h2>
-  <p style="max-width: 500px;margin: 0 auto;word-wrap: break-word;">{{ post.content }}</p>
-  <a href="{{ post.githublink }}" class="btn btn-primary">Github Link</a>
-</div>
-
-{% if session.admin is defined %}
-  <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
-  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-sm btn-outline-secondary">Delete</a>
-{% endif %}
-</div>
-  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-12">
+        <h1>{{ post.title }}</h1>
+        <p class="post-meta">{{ post.upload_date }} by {{ post.author }}</p>
+        <hr>
+        {% if post.file %}
+          <img class="img-fluid rounded" src="{{ url_for('static', filename='images/' + post.file) }}" alt="{{ post.title }}">
+        {% endif %}
+        <hr>
+        <p>{{ post.content }}</p>
+      </div>
+      <div class="col-lg-3 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">GitHub Repo</h5>
+            <p class="card-text">{{ post.github_link }}</p>
+            <a href="{{ post.github_link }}" target="_blank" class="btn btn-primary">Go to Repo</a>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Replit Repl</h5>
+            <p class="card-text">{{ post.replitlink }}</p>
+            <a href="{{ post.replit_link }}" target="_blank" class="btn btn-primary">Go to Repl</a>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Author Info</h5>
+            <p class="card-text">{{ post.author_info }}</p>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
 {% endblock %}

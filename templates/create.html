@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+
   <h1>Create New Post</h1>
   <form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
@@ -21,6 +22,28 @@
       {% if form.content.errors %}
         <div class="form-control-feedback">
           {% for error in form.content.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.githublink.label(class='form-control-label') }}
+      {{ form.githublink(class='form-control') }}
+      {% if form.githublink.errors %}
+        <div class="form-control-feedback">
+          {% for error in form.githublink.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{ form.replitlink.label(class='form-control-label') }}
+      {{ form.replitlink(class='form-control') }}
+      {% if form.replitlink.errors %}
+        <div class="form-control-feedback">
+          {% for error in form.replitlink.errors %}
             <span class="text-danger">{{ error }}</span>
           {% endfor %}
         </div>
