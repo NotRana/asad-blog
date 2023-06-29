@@ -1,4 +1,5 @@
 from flask import redirect
+from datetime import datetime
 from bson import ObjectId
 from flask import Flask, render_template, request, session
 from flask import url_for
@@ -30,7 +31,7 @@ collection = db['posts']
 def home():
   
     # Get all the blog posts from the database
-  posts = collection.find()
+  posts = db.posts.find().sort('date', -1)
 
   
   
@@ -61,7 +62,7 @@ class PostForm(FlaskForm):
     content = TextAreaField('Content', validators=[DataRequired()])
     file = FileField('Image')
     replitlink = TextAreaField('Replit', validators=[DataRequired()])
-    githublink = TextAreaField('Replit', validators=[DataRequired()])
+    githublink = TextAreaField('Github', validators=[DataRequired()])
  
 
     submit = SubmitField('Submit')
@@ -74,6 +75,8 @@ def create():
   form = PostForm(request.form)
   if form.validate_on_submit():
     if request.method == 'POST':
+        date = datetime.now()
+        # nowdate = request.form["nowdate"]
         title = request.form['title']
         content = request.form['content']
         file = request.files['file']
@@ -88,7 +91,8 @@ def create():
             "content": content,
             "file": filename,
             "replitlink": replitlink,
-            "githublink": githublink
+            "githublink": githublink,
+            "date": date
         })
         return redirect(url_for('home'))
     

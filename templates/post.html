@@ -3,37 +3,29 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 col-md-12">
-        <h1>{{ post.title }}</h1>
+      <div class="col-lg-6 col-md-12">
+        <h1 class="text-white">{{ post.title }}</h1>
         <p class="post-meta">{{ post.upload_date }} by {{ post.author }}</p>
         <hr>
         {% if post.file %}
           <img class="img-fluid rounded" src="{{ url_for('static', filename='images/' + post.file) }}" alt="{{ post.title }}">
         {% endif %}
         <hr>
-        <p>{{ post.content }}</p>
+        <p style="color:white;">{{ post.content }}</p>
       </div>
-      <div class="col-lg-3 col-md-12">
-        <div class="card">
+      <div class="col-lg-6 col-md-12" style="align-items:center; text-align:center;">
+        <div class="card bg-dark m-4" style="margin-left:20px;">
           <div class="card-body">
-            <h5 class="card-title">GitHub Repo</h5>
-            <p class="card-text">{{ post.github_link }}</p>
-            <a href="{{ post.github_link }}" target="_blank" class="btn btn-primary">Go to Repo</a>
+            <h5 class="card-title text-white">GitHub Repo</h5>
+            <!-- <p class="card-text">{{ post.githublink }}</p> -->
+            <a href="{{ post.githublink }}" target="_blank" class="btn btn-primary p-1">Go to Repo</a>
+            <h5 style="margin-top:30px;" class="card-title text-white">Replit Repl</h5>
+            <!-- <p class="card-text">{{ post.replitlink }}</p> -->
+            <a href="{{ post.replitlink }}" target="_blank" class="btn btn-primary">Go to Repl</a>
           </div>
         </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <h5 class="card-title">Replit Repl</h5>
-            <p class="card-text">{{ post.replitlink }}</p>
-            <a href="{{ post.replit_link }}" target="_blank" class="btn btn-primary">Go to Repl</a>
-          </div>
-        </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <h5 class="card-title">Author Info</h5>
-            <p class="card-text">{{ post.author_info }}</p>
-          </div>
-        </div>
+        
+        
         <br>
       </div>
     </div>
